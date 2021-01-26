@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Magic</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <ul class="menu">
+            <li>
+                <a href="get.html">Получить</a>
+            </li>
+            <li>
+                <a href="check.html">Проверить</a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const button = document.querySelector('.joke-button'); // Ссылка-кнопка
+        const text = document.querySelector('.joke-text'); // Параграф
+        const doge = document.querySelector('.doge-img'); //Картинка
+
+
+        button.addEventListener('click', async function() {
+            //Воспользоваться API https://dog.ceo/dog-api/
+            let response = await fetch('https://dog.ceo/api/breeds/image/random');
+            const jsonResponse = await response.json();
+            //Изменить перечень полей 
+            //const joke = jsonResponse.setup;
+            //  jsonResponse.message
+            doge.src = jsonResponse.message
+        })
+    </script>
+</body>
+
+</html>
